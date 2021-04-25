@@ -378,13 +378,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f2433248701ce4ea967d8341f92b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontRight: 0
+  FrontLeft: 0
+  RearRight: 1
+  RearLeft: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 1024
   _restLength: 0.5
-  _springTravel: 0.3
+  _springTravel: 0.2
   _springStiffness: 30000
+  _damperStiffness: 4000
   _wheeleRadius: 0.35
 --- !u!1 &603533198
 GameObject:
@@ -555,13 +560,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f2433248701ce4ea967d8341f92b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontRight: 0
+  FrontLeft: 0
+  RearRight: 0
+  RearLeft: 1
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 1024
   _restLength: 0.5
-  _springTravel: 0.3
+  _springTravel: 0.2
   _springStiffness: 30000
+  _damperStiffness: 4000
   _wheeleRadius: 0.35
 --- !u!1 &1307350554
 GameObject:
@@ -606,13 +616,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f2433248701ce4ea967d8341f92b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontRight: 1
+  FrontLeft: 0
+  RearRight: 0
+  RearLeft: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 1024
   _restLength: 0.5
-  _springTravel: 0.3
+  _springTravel: 0.2
   _springStiffness: 30000
+  _damperStiffness: 4000
   _wheeleRadius: 0.35
 --- !u!1 &1311728273
 GameObject:
@@ -723,6 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1317390468}
   - component: {fileID: 1317390467}
+  - component: {fileID: 1317390469}
   m_Layer: 0
   m_Name: Mazda
   m_TagString: Untagged
@@ -762,6 +778,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317390469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317390466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4347efa6730de48b0034a74dd0a0ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wheeleBase: 2.629
+  _rearTrack: 1.525
+  _turnRadius: 10.8
 --- !u!1 &1372959491
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,13 +836,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f2433248701ce4ea967d8341f92b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontRight: 0
+  FrontLeft: 1
+  RearRight: 0
+  RearLeft: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 1024
   _restLength: 0.5
-  _springTravel: 0.3
+  _springTravel: 0.2
   _springStiffness: 30000
+  _damperStiffness: 4000
   _wheeleRadius: 0.35
 --- !u!4 &1796498175 stripped
 Transform:

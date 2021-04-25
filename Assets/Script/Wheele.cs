@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class Wheele : MonoBehaviour
 {
+    public bool FrontRight;
+    public bool FrontLeft;
+    public bool RearRight;
+    public bool RearLeft;
+
+    public float SteerAngle;
+
+
+
+
     [SerializeField] private Rigidbody _rigidBody;
     [SerializeField] private LayerMask _groundLayer;
     [Header("suspension")]
@@ -11,6 +21,8 @@ public class Wheele : MonoBehaviour
     [SerializeField] private float _springTravel;
     [SerializeField] private float _springStiffness;
     [SerializeField] private float _damperStiffness;
+    [SerializeField] private float _steerTime;
+
 
     private float _minLength;
     private float _maxLength;
@@ -26,10 +38,19 @@ public class Wheele : MonoBehaviour
     [Header("Wheele")]
     [SerializeField] private float _wheeleRadius;
 
+
     private void Start()
     {
         _minLength = _restLength - _springTravel;
         _maxLength = _restLength + _springTravel;
+    }
+
+
+    private float _wheeleAngle;
+    private void Update()
+    {
+        _wheeleAngle = Mathf.Lerp(_wheeleAngle, SteerAngle, _steerTime * Time.deltaTime);
+        transform.localRotation = Quaternion.Euler(Vector3.up * _wheeleAngle);
     }
 
     private void FixedUpdate()
@@ -43,8 +64,6 @@ public class Wheele : MonoBehaviour
             _springLength = hit.distance - _wheeleRadius;
             _springLength = Mathf.Clamp(_springLength, _minLength, _maxLength);
             _springVelocity = (_lastLength - _springLength) / Time.deltaTime;
-
-
 
             _springForce = _springStiffness * (_restLength - _springLength);
             _damperForce = _damperStiffness * _springVelocity;
