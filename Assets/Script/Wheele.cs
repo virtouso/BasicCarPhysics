@@ -10,12 +10,18 @@ public class Wheele : MonoBehaviour
     [SerializeField] private float _restLength;
     [SerializeField] private float _springTravel;
     [SerializeField] private float _springStiffness;
+    [SerializeField] private float _damperStiffness;
 
     private float _minLength;
     private float _maxLength;
+    private float _lastLength;
     private float _springLength;
     private float _springForce;
-    private Vector3 _suspensionforce;
+    private float _springVelocity;
+    private Vector3 _suspensionForce;
+    private float _damperForce;
+
+
 
     [Header("Wheele")]
     [SerializeField] private float _wheeleRadius;
@@ -29,16 +35,21 @@ public class Wheele : MonoBehaviour
     private void FixedUpdate()
     {
 
-        Debug.DrawRay(transform.position, -transform.up * (_maxLength + _wheeleRadius),Color.red);
+        Debug.DrawRay(transform.position, -transform.up * (_maxLength + _wheeleRadius), Color.red);
         bool hasHit = Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, _maxLength + _wheeleRadius, _groundLayer);
         if (hasHit)
         {
-            print("asdasds");
+            _lastLength = _springLength;
             _springLength = hit.distance - _wheeleRadius;
+            _springLength = Mathf.Clamp(_springLength, _minLength, _maxLength);
+            _springVelocity = (_lastLength - _springLength) / Time.deltaTime;
+
+
 
             _springForce = _springStiffness * (_restLength - _springLength);
-            _suspensionforce = _springForce * transform.up;
-            _rigidBody.AddForceAtPosition(_suspensionforce, hit.point);
+            _damperForce = _damperStiffness * _springVelocity;
+            _suspensionForce = (_springForce + _damperForce) * transform.up;
+            _rigidBody.AddForceAtPosition(_suspensionForce, hit.point);
         }
     }
 
