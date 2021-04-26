@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Wheele : MonoBehaviour
@@ -32,6 +33,9 @@ public class Wheele : MonoBehaviour
     private float _springVelocity;
     private Vector3 _suspensionForce;
     private float _damperForce;
+
+    private Vector3 _wheeleVelocityLocalSpace;
+    private float Fx, Fy;
 
 
 
@@ -68,7 +72,13 @@ public class Wheele : MonoBehaviour
             _springForce = _springStiffness * (_restLength - _springLength);
             _damperForce = _damperStiffness * _springVelocity;
             _suspensionForce = (_springForce + _damperForce) * transform.up;
-            _rigidBody.AddForceAtPosition(_suspensionForce, hit.point);
+
+            _wheeleVelocityLocalSpace = transform.InverseTransformDirection(_rigidBody.GetPointVelocity(hit.point));
+            Fx = Input.GetAxis("Vertical") * 0.5f * _springForce;
+            Fy = _wheeleVelocityLocalSpace.x * _springForce;
+
+
+            _rigidBody.AddForceAtPosition(new Vector3(0, _suspensionForce.y, 0) + (Fx * transform.forward) /*+ (Fy * transform.right)*/, hit.point);
         }
     }
 

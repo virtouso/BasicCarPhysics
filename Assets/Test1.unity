@@ -382,6 +382,7 @@ MonoBehaviour:
   FrontLeft: 0
   RearRight: 1
   RearLeft: 0
+  SteerAngle: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
@@ -390,6 +391,7 @@ MonoBehaviour:
   _springTravel: 0.2
   _springStiffness: 30000
   _damperStiffness: 4000
+  _steerTime: 8
   _wheeleRadius: 0.35
 --- !u!1 &603533198
 GameObject:
@@ -564,6 +566,7 @@ MonoBehaviour:
   FrontLeft: 0
   RearRight: 0
   RearLeft: 1
+  SteerAngle: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
@@ -572,6 +575,7 @@ MonoBehaviour:
   _springTravel: 0.2
   _springStiffness: 30000
   _damperStiffness: 4000
+  _steerTime: 8
   _wheeleRadius: 0.35
 --- !u!1 &1307350554
 GameObject:
@@ -620,6 +624,7 @@ MonoBehaviour:
   FrontLeft: 0
   RearRight: 0
   RearLeft: 0
+  SteerAngle: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
@@ -628,6 +633,7 @@ MonoBehaviour:
   _springTravel: 0.2
   _springStiffness: 30000
   _damperStiffness: 4000
+  _steerTime: 8
   _wheeleRadius: 0.35
 --- !u!1 &1311728273
 GameObject:
@@ -790,9 +796,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4347efa6730de48b0034a74dd0a0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 1317390467}
+  _wheeles:
+  - {fileID: 1307350556}
+  - {fileID: 1372959493}
+  - {fileID: 408524637}
+  - {fileID: 874868250}
   _wheeleBase: 2.629
   _rearTrack: 1.525
-  _turnRadius: 10.8
+  _turnRadius: 5
 --- !u!1 &1372959491
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +852,7 @@ MonoBehaviour:
   FrontLeft: 1
   RearRight: 0
   RearLeft: 0
+  SteerAngle: 0
   _rigidBody: {fileID: 1317390467}
   _groundLayer:
     serializedVersion: 2
@@ -848,6 +861,7 @@ MonoBehaviour:
   _springTravel: 0.2
   _springStiffness: 30000
   _damperStiffness: 4000
+  _steerTime: 8
   _wheeleRadius: 0.35
 --- !u!4 &1796498175 stripped
 Transform:

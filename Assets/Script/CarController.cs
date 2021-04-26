@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-
+    [SerializeField] private Rigidbody _rigidBody;
     [SerializeField] private Wheele[] _wheeles;
 
     [Header("Config")]
@@ -49,6 +49,7 @@ public class CarController : MonoBehaviour
             else if (_wheeles[i].FrontRight)
             {
                 _wheeles[i].SteerAngle = _angleRight;
+               // _rigidBody.velocity = Vector3.zero;
             }
         }
 
